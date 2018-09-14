@@ -15,6 +15,9 @@ network_prefix='.'.join(start[:3])
 start=int(start[3])
 end=int(end[3])+1
 
+file=open("logs.txt", "w")
+
 for i in range (start, end):
     network=network_prefix + '.' + str(i)
-    subprocess.run(["ping", "-c", '1', "-W", '5', network])
+    subprocess.run(["ping", "-c", '1', "-W", '5', network], stdout=file)
+file.close()
